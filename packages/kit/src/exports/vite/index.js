@@ -49,8 +49,7 @@ const enforced_config = {
 			output: {
 				format: true,
 				entryFileNames: true,
-				chunkFileNames: true,
-				assetFileNames: true
+				chunkFileNames: true
 			},
 			preserveEntrySignatures: true
 		},
@@ -555,7 +554,7 @@ function kit({ svelte_config }) {
 								format: 'esm',
 								entryFileNames: ssr ? '[name].js' : `${prefix}/[name].[hash].${ext}`,
 								chunkFileNames: ssr ? 'chunks/[name].js' : `${prefix}/chunks/[name].[hash].${ext}`,
-								assetFileNames: `${prefix}/assets/[name].[hash][extname]`,
+								assetFileNames: config?.build?.rollupOptions?.output?.assetFileNames || `${prefix}/assets/[name].[hash][extname]`,
 								hoistTransitiveImports: false
 							},
 							preserveEntrySignatures: 'strict'
